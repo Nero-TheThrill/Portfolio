@@ -539,7 +539,7 @@ section,
   content: "";
   background: linear-gradient(to right, 
     var(--background-color) 0%, 
-    color-mix(in srgb, var(--background-color), transparent 70%) 70%, 
+    color-mix(in srgb, var(--background-color), transparent 75%) 60%, 
     transparent 100%);
   position: absolute;
   inset: 0;
