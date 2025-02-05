@@ -535,10 +535,12 @@ section,
   object-fit: cover;
   z-index: 1;
 }
-
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 40%);
+  background: linear-gradient(to right, 
+    var(--background-color) 0%, 
+    color-mix(in srgb, var(--background-color), transparent 70%) 70%, 
+    transparent 100%);
   position: absolute;
   inset: 0;
   z-index: 2;
