@@ -57,7 +57,7 @@ canvas.addEventListener("mousemove", (event) => {
   }
   `;
 
-  const fsSource = `
+ const fsSource = `
   precision mediump float;
 
   varying highp vec2 vTexCoord;
@@ -67,31 +67,41 @@ canvas.addEventListener("mousemove", (event) => {
   uniform sampler2D uSampler;
   uniform vec2 uMousePos;
 
+  float quantize(float x, float steps) {
+    return floor(x * steps) / steps;
+  }
+
   void main(void)
   {
     vec3 N = normalize(vNormalES);
-
     vec3 L = normalize(vec3(uMousePos - vec2(0.5, 0.5), 0.2));
     vec3 V = normalize(-vPosES);
 
-    vec3 ambient    = vec3(0.12);
-    vec3 lightColor = vec3(0.90);
+    vec3 ambient    = vec3(0.10);
+    vec3 lightColor = vec3(0.9);
+    float diffSteps = 4.0;
+    float specSteps = 2.0;
+    float shininess = 24.0;
+    float rimWidth  = 0.35;
+    float rimPower  = 1.5;
+    float rimScale  = 0.15;
 
-    float NdotL  = max(dot(N, L), 0.0);
-    vec3 diffuse = lightColor * NdotL;
+    float NdotL = max(dot(N, L), 0.0);
+    float diffuseToon = quantize(NdotL, diffSteps);
 
-    vec3  H         = normalize(L + V);
-    float specPow   = 16.0;
-    float specTerm  = pow(max(dot(N, H), 0.0), specPow);
-    float specScale = 0.06;
-    vec3  specular  = specScale * lightColor * specTerm;
+    vec3 H = normalize(L + V);
+    float s = pow(max(dot(N, H), 0.0), shininess);
+    float specToon = quantize(s, specSteps) * 0.15;
 
-    vec4 base  = vec4(1.0, 1.0, 1.0, 1.0);
-    vec3 color = base.rgb * (ambient + diffuse) + specular;
+    float rim = pow(smoothstep(1.0 - rimWidth, 1.0, 1.0 - max(dot(N, V), 0.0)), rimPower);
+    vec3 rimColor = vec3(rimScale) * rim;
 
-    gl_FragColor = vec4(color, base.a);
+    vec4 base = vec4(1.0, 1.0, 1.0, 1.0);
+    vec3 toon = base.rgb * (ambient + lightColor * diffuseToon) + lightColor * specToon + rimColor;
+    gl_FragColor = vec4(clamp(toon, 0.0, 1.0), base.a);
   }
   `;
+
 
   const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
 
