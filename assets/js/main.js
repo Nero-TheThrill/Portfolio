@@ -301,3 +301,9 @@
   window.addEventListener('language:changed', safeRefresh);
 })();
 
+document.querySelectorAll('.portfolio-item.highlight').forEach(item => {
+  item.addEventListener('animationiteration', () => {
+    item.classList.add('shine-active');
+    setTimeout(() => item.classList.remove('shine-active'), 200);
+  });
+});

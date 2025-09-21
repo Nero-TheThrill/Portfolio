@@ -889,6 +889,85 @@ section,
   bottom: 0;
 }
 
+/* Highlight card shine with window-like emphasis */
+.portfolio-item.highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+/* highlight card base */
+.portfolio-item.highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-item.highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shineLong 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.portfolio-item.highlight::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shineShort 2.5s ease-in-out infinite;
+  animation-delay: 0.05s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.portfolio-item.highlight .glow {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: glowFlash 2.5s ease-in-out infinite;
+}
+
+@keyframes shineLong {
+  0%   { left: -80%; }
+  20%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes shineShort {
+  0%   { left: -100%; }
+  25%  { left: 120%; }
+  100% { left: 120%; }
+}
+
+@keyframes glowFlash {
+  0%, 90%, 100% { opacity: 0; }
+  15% { opacity: 1; }
+}
+
+
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
