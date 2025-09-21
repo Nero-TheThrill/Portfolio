@@ -55,10 +55,10 @@ canvas.addEventListener("mousemove", (event) => {
 
     vNormalES  = normalize(mat3(uNormalMatrix) * aVertexNormal);
   }
-`;
+  `;
 
   const fsSource = `
- precision mediump float;
+  precision mediump float;
 
   varying highp vec2 vTexCoord;
   varying highp vec3 vNormalES;
@@ -72,23 +72,26 @@ canvas.addEventListener("mousemove", (event) => {
     vec3 N = normalize(vNormalES);
 
     vec3 L = normalize(vec3(uMousePos - vec2(0.5, 0.5), 0.2));
-    vec3 ambient = vec3(0.15);
-    vec3 lightColor = vec3(2.0);
+    vec3 V = normalize(-vPosES);
 
-    float NdotL = max(dot(N, L), 0.0);
+    vec3 ambient    = vec3(0.12);
+    vec3 lightColor = vec3(0.90);
+
+    float NdotL  = max(dot(N, L), 0.0);
     vec3 diffuse = lightColor * NdotL;
 
-    vec3 V = normalize(-vPosES);
-    vec3 H = normalize(L + V);
-    float spec = pow(max(dot(N, H), 0.0), 32.0);
-    vec3 specular = 0.2 * spec * lightColor;
+    vec3  H         = normalize(L + V);
+    float specPow   = 16.0;
+    float specTerm  = pow(max(dot(N, H), 0.0), specPow);
+    float specScale = 0.06;
+    vec3  specular  = specScale * lightColor * specTerm;
 
-    vec4 base = texture2D(uSampler, vTexCoord);
+    vec4 base  = vec4(1.0, 1.0, 1.0, 1.0);
     vec3 color = base.rgb * (ambient + diffuse) + specular;
 
     gl_FragColor = vec4(color, base.a);
   }
-`;
+  `;
 
   const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
 
