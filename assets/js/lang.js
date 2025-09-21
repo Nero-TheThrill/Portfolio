@@ -56,11 +56,11 @@
       'resume.edu.dit.school': 'Digipen Institute of Technology, Redmond, WA',
       'resume.edu.kmu.title': 'Bachelor of Science in Computer Science in Real-Time Interactive Simulation',
       'resume.edu.kmu.period': '2017.03 - 2019.06',
-      'resume.edu.kmu.school': 'Keimyung University, Daegu, KR',
+      'resume.edu.kmu.school': 'Keimyung University, Daegu, ko',
       'resume.extra': 'Additional Experience',
       'resume.military.title': 'Military service',
       'resume.military.period': '2019.08 - 2021.02',
-      'resume.military.place': 'Paju, KR',
+      'resume.military.place': 'Paju, ko',
       'resume.prof': 'Professional Experience',
       'resume.lecturer.title': 'Lecturer in Digipen Academy in Busan',
       'resume.lecturer.period': '2025.02 - ',
@@ -174,11 +174,11 @@
       'resume.edu.dit.school': 'Digipen Institute of Technology, 레드먼드, WA',
       'resume.edu.kmu.title': '실시간 상호작용 시뮬레이션 전공 컴퓨터공학 학사',
       'resume.edu.kmu.period': '2017.03 - 2019.06',
-      'resume.edu.kmu.school': '계명대학교, 대구, KR',
+      'resume.edu.kmu.school': '계명대학교, 대구, ko',
       'resume.extra': '기타 경력',
       'resume.military.title': '군 복무',
       'resume.military.period': '2019.08 - 2021.02',
-      'resume.military.place': '파주, KR',
+      'resume.military.place': '파주, ko',
       'resume.prof': '실무 경력',
       'resume.lecturer.title': '디지펜 아카데미 부산 강의',
       'resume.lecturer.period': '2025.02 - ',
@@ -276,27 +276,27 @@
   const btnKo = document.getElementById("btn-ko");
   const detailLinks = () => document.querySelectorAll(".details-link");
 
-  const getLang = () => localStorage.getItem("site_lang") || "EN";
+  const getLang = () => localStorage.getItem("site_lang") || "en";
   const setLang = (lang) => localStorage.setItem("site_lang", lang);
 
   function reflectButtons(lang) {
     if (!btnEn || !btnKo) return;
-    btnEn.classList.toggle("active", lang === "EN");
-    btnKo.classList.toggle("active", lang === "KR");
+    btnEn.classList.toggle("active", lang === "en");
+    btnKo.classList.toggle("active", lang === "ko");
   }
 
-  function toKR(href) {
-    if (/_KR\.html$/i.test(href)) return href;
-    return href.replace(/\.html$/i, "_KR.html");
+  function toko(href) {
+    if (/_ko\.html$/i.test(href)) return href;
+    return href.replace(/\.html$/i, "_ko.html");
   }
-  function toEN(href) {
-    return href.replace(/_KR\.html$/i, ".html");
+  function toen(href) {
+    return href.replace(/_ko\.html$/i, ".html");
   }
 
   function updateLinksFor(lang) {
     detailLinks().forEach((a) => {
       const base = a.getAttribute("href") || "";
-      a.setAttribute("href", lang === "KR" ? toKR(base.replace(/_KR\.html$/i, ".html")) : toEN(base));
+      a.setAttribute("href", lang === "ko" ? toko(base.replace(/_ko\.html$/i, ".html")) : toen(base));
     });
   }
 
@@ -308,16 +308,16 @@
 
   if (btnEn) {
     btnEn.addEventListener("click", () => {
-      setLang("EN");
-      reflectButtons("EN");
-      updateLinksFor("EN");
+      setLang("en");
+      reflectButtons("en");
+      updateLinksFor("en");
     });
   }
   if (btnKo) {
     btnKo.addEventListener("click", () => {
-      setLang("KR");
-      reflectButtons("KR");
-      updateLinksFor("KR");
+      setLang("ko");
+      reflectButtons("ko");
+      updateLinksFor("ko");
     });
   }
   document.addEventListener("click", (e) => {
@@ -327,12 +327,12 @@
 
     const lang = getLang();
     let href = a.getAttribute("href") || "";
-    if (lang === "KR" && !/_KR\.html$/i.test(href)) {
+    if (lang === "ko" && !/_ko\.html$/i.test(href)) {
       e.preventDefault();
-      window.location.href = toKR(href);
-    } else if (lang === "EN" && /_KR\.html$/i.test(href)) {
+      window.location.href = toko(href);
+    } else if (lang === "en" && /_ko\.html$/i.test(href)) {
       e.preventDefault();
-      window.location.href = toEN(href);
+      window.location.href = toen(href);
     }
   });
 })();

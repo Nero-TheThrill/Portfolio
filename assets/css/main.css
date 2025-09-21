@@ -1619,3 +1619,39 @@ section,
   .language-toggle { --h: 34px; }
   .language-toggle button { min-width: 48px; font-size: 13px; padding: 0 10px; }
 }
+
+
+/* --- Language Toggle 수정 --- */
+.language-toggle {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  display: flex;
+  gap: 6px;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.language-toggle.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.language-toggle button {
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.language-toggle button.active {
+  background: #0d6efd;
+  color: #fff;
+}
