@@ -273,6 +273,33 @@
   }
   };
 
+  const toggle = document.querySelector('.language-toggle');
+  if (!toggle) return;
+
+  const btnEn = document.querySelector('#btn-en');
+  const btnKo = document.querySelector('#btn-ko');
+
+  const setLang = (lang) => {
+    window.setLanguage(lang);
+  };
+
+  if (btnEn) btnEn.addEventListener('click', () => setLang('en'));
+  if (btnKo) btnKo.addEventListener('click', () => setLang('ko'));
+
+  function toko(href) {
+    if (/_ko\.html$/i.test(href)) return href;
+    return href.replace(/\.html$/i, "_ko.html");
+  }
+  function toen(href) {
+    return href.replace(/_ko\.html$/i, ".html");
+  }
+  function rewriteDetailLinks(lang) {
+    document.querySelectorAll(".details-link").forEach((a) => {
+      const base = a.getAttribute("href") || "";
+      const next = lang === "ko" ? toko(base) : toen(base);
+      if (next !== base) a.setAttribute("href", next);
+    });
+  }
   function apply(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -288,6 +315,7 @@
     }
     const toggleBox = document.querySelector('.language-toggle');
      if (toggleBox) toggleBox.setAttribute('data-active', lang);
+     rewriteDetailLinks(lang);
   }
 
   // Expose globally
@@ -309,35 +337,7 @@
   });
 })();
 
-(function () {
-  const btnEn = document.getElementById("btn-en");
-  const btnKo = document.getElementById("btn-ko");
 
-  function toko(href) {
-    if (/_ko\.html$/i.test(href)) return href;
-    return href.replace(/\.html$/i, "_ko.html");
-  }
-  function toen(href) {
-    return href.replace(/_ko\.html$/i, ".html");
-  }
-
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest("a");
-    if (!a) return;
-    if (!a.classList.contains("details-link")) return;
-
-    const lang = document.querySelector(".language-toggle")?.getAttribute("data-active") || "en";
-    let href = a.getAttribute("href") || "";
-    if (lang === "ko" && !/_ko\.html$/i.test(href)) {
-      e.preventDefault();
-      window.location.href = toko(href);
-    } else if (lang === "en" && /_ko\.html$/i.test(href)) {
-      e.preventDefault();
-      window.location.href = toen(href);
-    }
-  });
-
-})();
 
 (() => {
   const toggle = document.querySelector('.language-toggle');
@@ -397,25 +397,4 @@
     const mo = new MutationObserver(apply);
     mo.observe(header, { attributes: true, attributeFilter: ['class'] });
   }
-})();
-
-
-(() => {
-  const toggle = document.querySelector('.language-toggle');
-  if (!toggle) return;
-
-  const btnEn = document.querySelector('#btn-en');
-  const btnKo = document.querySelector('#btn-ko');
-
-  let active = toggle.dataset.active || 'en';
-
-  const setLang = (lang) => {
-    if (lang === active) return;
-    active = lang;
-    toggle.setAttribute('data-active', lang);
-
-  };
-
-  if (btnEn) btnEn.addEventListener('click', () => setLang('en'));
-  if (btnKo) btnKo.addEventListener('click', () => setLang('ko'));
 })();
