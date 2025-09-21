@@ -252,6 +252,7 @@
       btnEn.classList.toggle('active', lang === 'en');
       btnKo.classList.toggle('active', lang === 'ko');
     }
+    
   }
 
   // Expose globally
@@ -266,7 +267,7 @@
     const btnKo = document.getElementById('btn-ko');
     if (btnEn) btnEn.addEventListener('click', () => window.setLanguage('en'));
     if (btnKo) btnKo.addEventListener('click', () => window.setLanguage('ko'));
-    const initial = localStorage.getItem('lang') || (navigator.language && navigator.language.startsWith('ko') ? 'ko' : 'en');
+    const initial = 'en';
     apply(initial);
   });
 })();
@@ -276,13 +277,16 @@
   const btnKo = document.getElementById("btn-ko");
   const detailLinks = () => document.querySelectorAll(".details-link");
 
-  const getLang = () => localStorage.getItem("site_lang") || "en";
-  const setLang = (lang) => localStorage.setItem("site_lang", lang);
-
   function reflectButtons(lang) {
     if (!btnEn || !btnKo) return;
     btnEn.classList.toggle("active", lang === "en");
     btnKo.classList.toggle("active", lang === "ko");
+
+    // language-toggle 컨테이너에 data-active도 표시
+    const toggleBox = document.querySelector(".language-toggle");
+    if (toggleBox) {
+      toggleBox.setAttribute("data-active", lang);
+    }
   }
 
   function toko(href) {
@@ -300,32 +304,25 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const lang = getLang();
-    reflectButtons(lang);
-    updateLinksFor(lang);
-  });
-
   if (btnEn) {
     btnEn.addEventListener("click", () => {
-      setLang("en");
       reflectButtons("en");
       updateLinksFor("en");
     });
   }
   if (btnKo) {
     btnKo.addEventListener("click", () => {
-      setLang("ko");
       reflectButtons("ko");
       updateLinksFor("ko");
     });
   }
+
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (!a) return;
     if (!a.classList.contains("details-link")) return;
 
-    const lang = getLang();
+    const lang = document.querySelector(".language-toggle")?.getAttribute("data-active") || "en";
     let href = a.getAttribute("href") || "";
     if (lang === "ko" && !/_ko\.html$/i.test(href)) {
       e.preventDefault();
@@ -335,7 +332,12 @@
       window.location.href = toen(href);
     }
   });
+
+  // --- 초기값: 항상 영어(en) ---
+  reflectButtons("en");
+  updateLinksFor("en");
 })();
+
 (() => {
   const toggle = document.querySelector('.language-toggle');
   if (!toggle) return;
@@ -395,6 +397,8 @@
     mo.observe(header, { attributes: true, attributeFilter: ['class'] });
   }
 })();
+
+
 (() => {
   const toggle = document.querySelector('.language-toggle');
   if (!toggle) return;
