@@ -1574,7 +1574,7 @@ section,
   will-change: transform;
   z-index: 0;
 }
-.language-toggle[data-active="kr"]::before {
+.language-toggle[data-active="ko"]::before {
   transform: translateX(calc(100% + var(--gap)));
 }
 
@@ -1595,7 +1595,7 @@ section,
   -webkit-tap-highlight-color: transparent;
 }
 .language-toggle[data-active="en"] #btn-en,
-.language-toggle[data-active="kr"] #btn-ko { color: #fff; }
+.language-toggle[data-active="ko"] #btn-ko { color: #fff; }
 .language-toggle button:hover { opacity: .9; }
 .language-toggle button:focus-visible {
   outline: none;

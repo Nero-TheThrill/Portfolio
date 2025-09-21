@@ -286,7 +286,8 @@
       btnEn.classList.toggle('active', lang === 'en');
       btnKo.classList.toggle('active', lang === 'ko');
     }
-    
+    const toggleBox = document.querySelector('.language-toggle');
+     if (toggleBox) toggleBox.setAttribute('data-active', lang);
   }
 
   // Expose globally
@@ -301,7 +302,9 @@
     const btnKo = document.getElementById('btn-ko');
     if (btnEn) btnEn.addEventListener('click', () => window.setLanguage('en'));
     if (btnKo) btnKo.addEventListener('click', () => window.setLanguage('ko'));
-    const initial = 'en';
+    const detailLinks = () => document.querySelectorAll(".details-link");
+    const saved = localStorage.getItem('lang');
+    const initial = saved || 'en';
     apply(initial);
   });
 })();
@@ -309,14 +312,13 @@
 (function () {
   const btnEn = document.getElementById("btn-en");
   const btnKo = document.getElementById("btn-ko");
-  const detailLinks = () => document.querySelectorAll(".details-link");
+
 
   function reflectButtons(lang) {
     if (!btnEn || !btnKo) return;
     btnEn.classList.toggle("active", lang === "en");
     btnKo.classList.toggle("active", lang === "ko");
 
-    // language-toggle 컨테이너에 data-active도 표시
     const toggleBox = document.querySelector(".language-toggle");
     if (toggleBox) {
       toggleBox.setAttribute("data-active", lang);
@@ -367,7 +369,6 @@
     }
   });
 
-  // --- 초기값: 항상 영어(en) ---
   reflectButtons("en");
   updateLinksFor("en");
 })();
@@ -450,5 +451,5 @@
   };
 
   if (btnEn) btnEn.addEventListener('click', () => setLang('en'));
-  if (btnKo) btnKo.addEventListener('click', () => setLang('kr'));
+  if (btnKo) btnKo.addEventListener('click', () => setLang('ko'));
 })();
