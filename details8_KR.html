@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Details - Graphics Engine 1</title>
+  <title>세부정보 - Way Back Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,28 +26,18 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: MyResume
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="portfolio-details-page">
 
   <header id="header" class="header d-flex flex-column justify-content-center">
-
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="https://nero-thethrill.github.io/Portfolio/#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
+        <li><a href="https://nero-thethrill.github.io/Portfolio/#portfolio"><i class="bi bi-images navicon"></i><span>포트폴리오</span></a></li>
       </ul>
     </nav>
-
   </header>
 
   <main class="main">
@@ -57,17 +47,17 @@
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current"> Details</li>
+            <li><a href="index.html">홈</a></li>
+            <li class="current">세부정보</li>
           </ol>
         </nav>
-        <h1>Graphics Engine 1</h1>
+        <h1>Way Back Home</h1>
       </div>
-    </div><!-- End Page Title -->
+    </div>
+    <!-- End Page Title -->
 
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-
       <div class="container" data-aos="fade-up">
 
         <div class="portfolio-details-slider swiper init-swiper">
@@ -75,39 +65,28 @@
             {
               "loop": true,
               "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
+              "autoplay": { "enabled": false },
               "slidesPerView": "auto",
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              },
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
+              "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" },
+              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true }
             }
           </script>
           <div class="swiper-wrapper align-items-center">
 
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/.jpg" alt="">
+              <div class="portfolio-media">
+                <iframe src="https://drive.google.com/file/d/113uyvV3lW2b-tbi0qR6IdG9ehIFyv-cC/preview" allow="autoplay" allowfullscreen></iframe>
+              </div>
             </div>
-
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/.jpg" alt="">
+              <img src="detailImage/wbh2.png" alt="">
             </div>
-
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/.jpg" alt="">
+              <img src="detailImage/wbh1.png" alt="">
             </div>
-
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/.jpg" alt="">
+              <img src="detailImage/wbh.png" alt="">
             </div>
-
           </div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
@@ -116,45 +95,44 @@
 
         <div class="row justify-content-between gy-4 mt-4">
 
-          <div class="col-lg-8" data-aos="fade-up">
+          <div class="col-lg-8">
             <div class="portfolio-description">
-              <h2>Graphics Engine 1</h2>
+              <h2>Way Back Home</h2>
               <p>
-                WIP: About project
+                <strong>Way Back Home</strong>은 섬에서 탈출하는 것을 목표로 한 2D 탑다운 퍼즐 게임입니다.  
+                플레이어는 "시간 탄환"을 활용해 오브젝트를 조작·결합하며 스테이지 퍼즐을 해결합니다.
               </p>
               <p>
-                WIP: About project
+                3명의 팀이 자체 제작한 커스텀 엔진을 기반으로 개발했으며,  
+                저는 프로젝트에서 <strong>프로듀서</strong>이자 <strong>엔진 아키텍트</strong> 역할을 맡았습니다.  
+                개발 과정에서 일정 관리, 팀워크 조율, 협업의 중요성을 깊이 배우는 기회가 되었습니다.
               </p>
-
-            
               <p>
-                WIP: About project
+                또한 플레이어가 자신의 게임 플레이를 다시 볼 수 있는 <strong>리플레이 기능</strong>을 구현했지만,  
+                테스트 과정에서 불필요하다는 피드백을 받아 결국 제거하게 되었습니다.  
+                이는 기능 우선순위를 이해하는 데 있어 값진 경험이 되었습니다.
               </p>
-
-              <p>
-                WIP: About project
-              </p>
-
             </div>
           </div>
 
-          <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-3">
             <div class="portfolio-info">
-              <h3>Project information</h3>
+              <h3>프로젝트 정보</h3>
               <ul>
-                <li><strong>Category</strong> category</li>
-                <li><strong>Project date</strong> 01 March, 2020</li>
-                <li><strong>Project URL</strong> <a href="https://www.linkedin.com/in/imjinwoo/">https://www.linkedin.com/in/imjinwoo/</a></li>
-                <li><a href="#" class="btn-visit align-self-start">View Project</a></li>
+                <li><strong>카테고리</strong> 커스텀 엔진, 퍼즐 게임, 2D</li>
+                <li><strong>팀 규모</strong> 개발자 3명</li>
+                <li><strong>역할</strong> 프로듀서, 엔진 아키텍트</li>
+                <li><strong>프로젝트 기간</strong> 2018년 9월 - 2019년 6월</li>
+                <li><strong>프로젝트 URL</strong> <a target="_blank" href="https://github.com/Nero-TheThrill/-Game-waybackhome_built-with-customengine">GitHub Repository</a></li>
+                <li><a href="https://github.com/Nero-TheThrill/Portfolio/raw/refs/heads/main/files/waybackhome.zip?download=" class="btn-visit align-self-start">프로젝트 다운로드</a></li>
               </ul>
             </div>
           </div>
 
         </div>
-
       </div>
-
-    </section><!-- /Portfolio Details Section -->
+    </section>
+    <!-- /Portfolio Details Section -->
 
   </main>
 
@@ -166,13 +144,9 @@
       </div>
       <div class="container">
         <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Alex Smith</strong> <span>All Rights Reserved</span>
+          <span>Copyright</span> <strong class="px-1 sitename">Jinwoo Choi</strong> <span>All Rights Reserved</span>
         </div>
         <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuited by <a href="https://themewagon.com">ThemeWagon</a>
         </div>
       </div>
@@ -201,5 +175,4 @@
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>

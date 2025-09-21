@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>세부정보 - Graphics Engine 1</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="https://nero-thethrill.github.io/Portfolio/#portfolio"><i class="bi bi-images navicon"></i><span>포트폴리오</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">홈</a></li>
+            <li class="current">세부정보</li>
+          </ol>
+        </nav>
+        <h1>Graphics Engine 1</h1>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="portfolio-details-slider swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": { "enabled": false },
+              "slidesPerView": "auto",
+              "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" },
+              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true }
+            }
+          </script>
+
+          <div class="swiper-wrapper align-items-center">
+
+            <div class="swiper-slide">
+              <div class="portfolio-media">
+                <iframe src="https://drive.google.com/file/d/1ozdyVbpptL-jQC8T8iUtVA_z0lGanTT2/preview" allow="autoplay" object-fit="cover" allowfullscreen></iframe>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="portfolio-media">
+                <img src="detailImage/grapigs1.png" alt="Graphics Engine 1 스크린샷 1">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="portfolio-media">
+                <img src="detailImage/grapigs2.png" alt="Graphics Engine 1 스크린샷 2">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="portfolio-media">
+                <img src="detailImage/grapigs3.png" alt="Graphics Engine 1 스크린샷 3">
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="row justify-content-between gy-4 mt-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-description">
+              <h2>Graphics Engine 1</h2>
+              <h5>물리 기반 렌더링(PBR) & 이미지 기반 라이팅(IBL)</h5>
+              <p>
+                이 프로젝트는 동문인 현지나 님과 협업하여 개발했습니다. 실시간으로 3D 모델을 로드해 보여주면서, 물리 기반 렌더링(PBR)과 이미지 기반 라이팅(IBL)의 효과를 시연하는 프로그램입니다.
+              </p>
+              <p>
+                제가 이전에 만들었던 커스텀 엔진을 바탕으로 시스템을 더 단순하고 효율적이며 사용자 친화적으로 재구성했습니다.
+                지나는 툴링과 인터페이스를 담당했고, 저는 그래픽스 파이프라인과 렌더링 기법에 집중했습니다.
+              </p>
+
+              <h5>핵심 기능</h5>
+              <ul>
+                <p><li>최적화된 렌더링 파이프라인:</li> 물리 기반 렌더링과 이미지 기반 라이팅을 활용하여 현실적인 머티리얼 셰이딩과 정확한 환경 반사를 제공합니다.</p>
+                <p><li>드래그 앤 드롭 모델/텍스처 로딩:</li> 간단한 드래그 앤 드롭 인터페이스로 모델과 텍스처를 손쉽게 불러올 수 있습니다.</p>
+                <p><li>서브 하이어라키 제어:</li> 모델 하이어라키의 개별 컴포넌트에 접근하여 메탈니스/러프니스 값을 조정, 머티리얼을 더욱 세밀하게 커스터마이즈할 수 있습니다.</p>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="portfolio-info">
+              <h3>프로젝트 정보</h3>
+              <ul>
+                <li><strong>카테고리</strong> 커스텀 엔진, OpenGL, PBR</li>
+                <li><strong>팀 규모</strong> 개발자 2명</li>
+                <li><strong>역할</strong> 그래픽스 엔지니어</li>
+                <li><strong>프로젝트 기간</strong> 2022년 9월 ~ 2023년 4월</li>
+                <li><strong>프로젝트 URL</strong> <a target="_blank" href="https://github.com/Nero-TheThrill/GrapigsEngine">https://github.com/Nero-TheThrill/GrapigsEngine</a></li>
+                <li><a href="https://github.com/Nero-TheThrill/Portfolio/raw/refs/heads/main/files/GrapigsEngine.zip?download=" class="btn-visit align-self-start">프로젝트 다운로드</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- /Portfolio Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.linkedin.com/in/imjinwoo/"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Nero-TheThrill/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">Jinwoo Choi</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="credits">
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuited by <a href="https://themewagon.com">ThemeWagon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>세부정보 - Deferred Shading</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="https://nero-thethrill.github.io/Portfolio/#portfolio"><i class="bi bi-images navicon"></i><span>포트폴리오</span></a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">홈</a></li>
+            <li class="current">세부정보</li>
+          </ol>
+        </nav>
+        <h1>Deferred Shading</h1>
+      </div>
+    </div>
+    <!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="portfolio-details-slider swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": { "delay": 5000 },
+              "slidesPerView": "auto",
+              "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" },
+              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+
+            <div class="swiper-slide">
+              <img src="detailImage/presentation.png" alt="발표 슬라이드 1">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="detailImage/presentation1.png" alt="발표 슬라이드 2">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="detailImage/presentation2.png" alt="발표 슬라이드 3">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="detailImage/presentation3.png" alt="발표 슬라이드 4">
+            </div>
+
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="row justify-content-between gy-4 mt-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-description">
+              <h2>Deferred Shading</h2>
+              <p>
+                졸업 후 입사 전까지 약 한 달의 시간이 있어, 교수님의 요청으로 후배들을 대상으로 강의를 진행했습니다.
+                디지펜 커리큘럼과 연관된 주제라면 무엇이든 가능했기에, 그래픽스를 좋아하는 마음으로
+                <strong>Deferred Shading</strong>을 주제로 준비했습니다.
+              </p>
+              <p>
+                OpenGL 3.0뿐 아니라 최신 버전에서의 활용 방법까지 다루며, 원리와 실전 적용을 모두 설명했습니다.
+                강의 자료에는 <strong>Local Lighting</strong>에 대한 간단한 소개도 포함해,
+                구현 개념과 조명 최적화에 어떻게 기여하는지까지 함께 설명했습니다.
+              </p>
+              <p>
+                기본 개념을 쉽고 명확하게 전달하기 위해 구성과 예시를 여러 번 다듬었습니다.
+                준비 과정에는 많은 시간이 들었지만, 지식을 나누는 일에서 큰 보람을 느꼈습니다.
+              </p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="portfolio-info">
+              <h3>프로젝트 정보</h3>
+              <ul>
+                <li><strong>카테고리</strong> 강의, 프레젠테이션, Deferred Shading</li>
+                <li><strong>역할</strong> 강연자</li>
+                <li><strong>대상</strong> 후배 학생</li>
+                <li><strong>프로젝트 기간</strong> 2023년 5월</li>
+                <li><a target="_blank" href="files/Deferred_Shadinglocal_lighting.pdf" class="btn-visit align-self-start">발표자료 보기</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- /Portfolio Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.linkedin.com/in/imjinwoo/"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Nero-TheThrill/"><i class="bi bi-github"></i></a>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          <span>Copyright</span> <strong class="px-1 sitename">Jinwoo Choi</strong> <span>All Rights Reserved</span>
+        </div>
+        <div class="credits">
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuited by <a href="https://themewagon.com">ThemeWagon</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
