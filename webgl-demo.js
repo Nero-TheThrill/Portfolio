@@ -37,51 +37,56 @@ canvas.addEventListener("mousemove", (event) => {
   attribute vec3 aVertexNormal;
   attribute vec2 aTextureCoord;
 
-  uniform mat4 uNormalMatrix;
   uniform mat4 uModelViewMatrix;
   uniform mat4 uProjectionMatrix;
+  uniform mat4 uNormalMatrix;
 
-  varying highp vec2 vTextureCoord;
-  varying highp vec3 vLighting;
-  varying highp vec3 vNormal;
+  varying highp vec2 vTexCoord;
+  varying highp vec3 vNormalES;
+  varying highp vec3 vPosES;
 
-  uniform vec2 uMousePos;
+  void main(void)
+  {
+    vec4 posES = uModelViewMatrix * aVertexPosition;
+    gl_Position = uProjectionMatrix * posES;
 
-  void main(void) {
-    gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
-    vTextureCoord = aTextureCoord;
+    vTexCoord  = aTextureCoord;
+    vPosES     = posES.xyz;
 
-    // Apply lighting effect
-
-    highp vec3 ambientLight = vec3(0.15, 0.15, 0.15);
-    highp vec3 directionalLightColor = vec3(2.0,2.0,2.0);
-    highp vec3 directionalVector = normalize(vec3(uMousePos-vec2(0.5,0.5), 0.1));
-
-    highp vec4 transformedNormal = uNormalMatrix * vec4(aVertexNormal, 1.0);
-
-    highp float directional = max(dot(transformedNormal.xyz, directionalVector), 0.0);
-    vLighting = ambientLight + (directionalLightColor * directional);
-    vNormal = normalize(aVertexNormal);
+    vNormalES  = normalize(mat3(uNormalMatrix) * aVertexNormal);
   }
 `;
 
   const fsSource = `
-  precision mediump float;
-  varying highp vec2 vTextureCoord;
-  varying highp vec3 vLighting;
-  varying highp vec3 vNormal;
+ precision mediump float;
+
+  varying highp vec2 vTexCoord;
+  varying highp vec3 vNormalES;
+  varying highp vec3 vPosES;
+
   uniform sampler2D uSampler;
+  uniform vec2 uMousePos;
 
-  void main(void) {
-    highp vec4 texelColor = vec4(vNormal,1.0);//texture2D(uSampler, vTextureCoord);//
-    if(texelColor.x<0.0)
-      texelColor.x=-texelColor.x;
-    if(texelColor.y<0.0)
-      texelColor.y=-texelColor.y;
-    if(texelColor.z<0.0)
-      texelColor.z=-texelColor.z;
+  void main(void)
+  {
+    vec3 N = normalize(vNormalES);
 
-    gl_FragColor = vec4(vLighting, texelColor.a);
+    vec3 L = normalize(vec3(uMousePos - vec2(0.5, 0.5), 0.2));
+    vec3 ambient = vec3(0.15);
+    vec3 lightColor = vec3(2.0);
+
+    float NdotL = max(dot(N, L), 0.0);
+    vec3 diffuse = lightColor * NdotL;
+
+    vec3 V = normalize(-vPosES);
+    vec3 H = normalize(L + V);
+    float spec = pow(max(dot(N, H), 0.0), 32.0);
+    vec3 specular = 0.2 * spec * lightColor;
+
+    vec4 base = texture2D(uSampler, vTexCoord);
+    vec3 color = base.rgb * (ambient + diffuse) + specular;
+
+    gl_FragColor = vec4(color, base.a);
   }
 `;
 
