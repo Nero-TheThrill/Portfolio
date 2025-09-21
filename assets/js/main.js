@@ -227,3 +227,76 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+// --- Safe refresh after resize / language toggle / font load / tab return ---
+(function () {
+  const applySkillsBars = () => {
+    const bars = document.querySelectorAll('.skills-content .progress .progress-bar');
+    bars.forEach(bar => {
+      const target = bar.getAttribute('aria-valuenow') || bar.dataset.value || '0';
+      const computed = getComputedStyle(bar).width;
+      if (!bar.style.width || computed === '0px') {
+        bar.style.width = target + '%';
+      }
+      bar.style.opacity = '1';
+      bar.style.visibility = 'visible';
+    });
+  };
+
+  const safeRefresh = () => {
+    // AOS 다시 계산
+    if (window.AOS && typeof AOS.refreshHard === 'function') AOS.refreshHard();
+    else if (window.AOS && typeof AOS.refresh === 'function') AOS.refresh();
+
+    document.querySelectorAll('.swiper, .init-swiper').forEach(el => {
+      if (el.swiper && typeof el.swiper.update === 'function') el.swiper.update();
+    });
+
+    if (window.isotopeLayout && typeof window.isotopeLayout.arrange === 'function') {
+      window.isotopeLayout.arrange();
+    }
+
+    ['#resume', '#recommendation', '.testimonials', '#skills', '.skills'].forEach(sel => {
+      document.querySelectorAll(sel + ' [data-aos]').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.classList.add('aos-animate');
+      });
+    });
+
+    applySkillsBars();
+  };
+
+  const onScrollFix = () => {
+    const box = document.querySelector('.skills-content');
+    if (!box) return;
+    const r = box.getBoundingClientRect();
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    if (r.top < vh * 0.9) {
+      applySkillsBars();
+      window.removeEventListener('scroll', onScrollFix);
+    }
+  };
+
+  let raf = null;
+  const onResize = () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(safeRefresh);
+  };
+
+  window.addEventListener('resize', onResize);
+  window.addEventListener('orientationchange', safeRefresh);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) safeRefresh(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(safeRefresh);
+  window.addEventListener('load', () => {
+    safeRefresh();
+    window.addEventListener('scroll', onScrollFix, { passive: true });
+  });
+
+  const mo = new MutationObserver(() => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => setTimeout(safeRefresh, 0));
+  });
+  mo.observe(document.body, { subtree: true, childList: true, characterData: true });
+  window.addEventListener('language:changed', safeRefresh);
+})();
