@@ -256,13 +256,13 @@
       window.isotopeLayout.arrange();
     }
 
-    ['#resume', '#recommendation', '.testimonials', '#skills', '.skills'].forEach(sel => {
-      document.querySelectorAll(sel + ' [data-aos]').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.classList.add('aos-animate');
-      });
+  ['#resume', '#recommendation', '.testimonials', '#skills', '.skills', '#contact'].forEach(sel => {
+    document.querySelectorAll(sel + ' [data-aos]').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.add('aos-animate');
     });
+  });
 
     applySkillsBars();
   };
