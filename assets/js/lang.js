@@ -276,7 +276,6 @@
   const btnKo = document.getElementById("btn-ko");
   const detailLinks = () => document.querySelectorAll(".details-link");
 
-  // 언어 상태: localStorage 에 저장/복원
   const getLang = () => localStorage.getItem("site_lang") || "EN";
   const setLang = (lang) => localStorage.setItem("site_lang", lang);
 
@@ -287,13 +286,10 @@
   }
 
   function toKR(href) {
-    // detailsX.html -> detailsX_KR.html
-    // 이미 _KR면 그대로
     if (/_KR\.html$/i.test(href)) return href;
     return href.replace(/\.html$/i, "_KR.html");
   }
   function toEN(href) {
-    // detailsX_KR.html -> detailsX.html
     return href.replace(/_KR\.html$/i, ".html");
   }
 
@@ -304,17 +300,12 @@
     });
   }
 
-  // 초기 로드: 저장된 언어 적용 + 링크 교체
   document.addEventListener("DOMContentLoaded", () => {
-    const lang = getLang();          // 기본 EN, 사용자가 이전에 KR로 썼다면 KR
+    const lang = getLang();
     reflectButtons(lang);
     updateLinksFor(lang);
-
-    // 만약 HTML을 로드할 때 기본을 KR로 강제하고 싶다면:
-    // const lang = "KR"; setLang(lang); reflectButtons(lang); updateLinksFor(lang);
   });
 
-  // 버튼 핸들러
   if (btnEn) {
     btnEn.addEventListener("click", () => {
       setLang("EN");
@@ -329,8 +320,6 @@
       updateLinksFor("KR");
     });
   }
-
-  // 혹시 클래스 추가를 깜빡한 카드가 있어도 안전하게: 클릭 순간 라우팅 보정
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (!a) return;
@@ -346,4 +335,82 @@
       window.location.href = toEN(href);
     }
   });
+})();
+(() => {
+  const toggle = document.querySelector('.language-toggle');
+  if (!toggle) return;
+
+  const header = document.querySelector('.header');
+  const menuBtn = document.querySelector('.header-toggle');
+  const aboutImg = document.querySelector('#about img.img-fluid');
+  const aboutSection = document.querySelector('#about');
+
+  const getBottomY = (el) => {
+    if (!el) return 0;
+    const r = el.getBoundingClientRect();
+    return r.top + window.scrollY + r.height;
+  };
+
+  let thresholdY = 0;
+  const recalc = () => {
+    thresholdY = aboutImg ? getBottomY(aboutImg) :
+                 aboutSection ? (aboutSection.getBoundingClientRect().top + window.scrollY + aboutSection.offsetHeight * 0.7) :
+                 0;
+    apply();
+  };
+
+  let hidden = false;
+  const setHidden = (next) => {
+    if (next === hidden) return;
+    hidden = next;
+    requestAnimationFrame(() => {
+      toggle.classList.toggle('is-hidden', hidden);
+    });
+  };
+
+  const apply = () => {
+    const y = window.scrollY || window.pageYOffset;
+    const belowImage = thresholdY ? (y > thresholdY-550) : false;
+    const menuOpen = header && header.classList.contains('header-show');
+    setHidden(belowImage || menuOpen);
+  };
+
+  recalc();
+  window.addEventListener('scroll', apply, { passive: true });
+  window.addEventListener('resize', recalc);
+
+  if (aboutImg) {
+    if (aboutImg.complete) recalc();
+    else aboutImg.addEventListener('load', recalc);
+  }
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      setTimeout(apply, 0);
+    });
+  }
+
+  if (header) {
+    const mo = new MutationObserver(apply);
+    mo.observe(header, { attributes: true, attributeFilter: ['class'] });
+  }
+})();
+(() => {
+  const toggle = document.querySelector('.language-toggle');
+  if (!toggle) return;
+
+  const btnEn = document.querySelector('#btn-en');
+  const btnKo = document.querySelector('#btn-ko');
+
+  let active = toggle.dataset.active || 'en';
+
+  const setLang = (lang) => {
+    if (lang === active) return;
+    active = lang;
+    toggle.setAttribute('data-active', lang);
+
+  };
+
+  if (btnEn) btnEn.addEventListener('click', () => setLang('en'));
+  if (btnKo) btnKo.addEventListener('click', () => setLang('kr'));
 })();
