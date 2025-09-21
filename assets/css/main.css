@@ -244,6 +244,11 @@ h6 {
   padding: 0 5px 0 7px;
 }
 
+.navmenu a span {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
 @media (min-width: 992px) {
 
   .navmenu a,
