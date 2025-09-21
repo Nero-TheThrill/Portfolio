@@ -373,7 +373,7 @@
 
   const apply = () => {
     const y = window.scrollY || window.pageYOffset;
-    const belowImage = thresholdY ? (y > thresholdY+9999) : false;
+    const belowImage = thresholdY ? (y > thresholdY-550) : false;
     const menuOpen = header && header.classList.contains('header-show');
     setHidden(belowImage || menuOpen);
   };
