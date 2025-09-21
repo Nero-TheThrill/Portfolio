@@ -313,44 +313,12 @@
   const btnEn = document.getElementById("btn-en");
   const btnKo = document.getElementById("btn-ko");
 
-
-  function reflectButtons(lang) {
-    if (!btnEn || !btnKo) return;
-    btnEn.classList.toggle("active", lang === "en");
-    btnKo.classList.toggle("active", lang === "ko");
-
-    const toggleBox = document.querySelector(".language-toggle");
-    if (toggleBox) {
-      toggleBox.setAttribute("data-active", lang);
-    }
-  }
-
   function toko(href) {
     if (/_ko\.html$/i.test(href)) return href;
     return href.replace(/\.html$/i, "_ko.html");
   }
   function toen(href) {
     return href.replace(/_ko\.html$/i, ".html");
-  }
-
-  function updateLinksFor(lang) {
-    detailLinks().forEach((a) => {
-      const base = a.getAttribute("href") || "";
-      a.setAttribute("href", lang === "ko" ? toko(base.replace(/_ko\.html$/i, ".html")) : toen(base));
-    });
-  }
-
-  if (btnEn) {
-    btnEn.addEventListener("click", () => {
-      reflectButtons("en");
-      updateLinksFor("en");
-    });
-  }
-  if (btnKo) {
-    btnKo.addEventListener("click", () => {
-      reflectButtons("ko");
-      updateLinksFor("ko");
-    });
   }
 
   document.addEventListener("click", (e) => {
@@ -369,8 +337,6 @@
     }
   });
 
-  reflectButtons("en");
-  updateLinksFor("en");
 })();
 
 (() => {
