@@ -1,5 +1,6 @@
 import { initBuffers } from "./init-buffers.js";
 import { drawScene } from "./draw-scene.js";
+import { resizeCanvasToDisplaySize } from "./draw-scene.js";
 
 let cubeRotation = 0.0;
 let deltaTime = 0;
@@ -132,7 +133,7 @@ canvas.addEventListener("mousemove", (event) => {
     now *= 0.001;
     deltaTime = now - then;
     then = now;
-
+    resizeCanvasToDisplaySize(gl);
     drawScene(gl, programInfo, buffers, texture, cubeRotation, mouse);
     cubeRotation += deltaTime;
 

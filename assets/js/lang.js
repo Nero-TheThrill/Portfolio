@@ -203,7 +203,7 @@
 
     'resume.byte.title': 'XR 엔진 & 런타임 소프트웨어 엔지니어',
     'resume.byte.period': '2023.05 - 2024.10',
-    'resume.byte.place': 'ByteDance (Mountain View, CA)',
+    'resume.byte.place': 'ByteDance(PICO) (Mountain View, CA)',
     'resume.byte.blogLabel': 'Blog Post:',
     'resume.byte.b1': 'VR 디바이스용 URP Bloom에서 GPU 사용량 15~30% 절감',
     'resume.byte.b2': 'Unity 내장 파이프라인 Multiview 깊이 왜곡 보정',
@@ -219,7 +219,7 @@
 
     'resume.tiktok.title': 'AR 이펙트 소프트웨어 엔지니어 인턴',
     'resume.tiktok.period': '2022.05 - 2022.08',
-    'resume.tiktok.place': 'TikTok (Mountain View, CA)',
+    'resume.tiktok.place': 'ByteDance(TikTok) (Mountain View, CA)',
     'resume.tiktok.b1': 'TikTok 스티커의 성능 한계를 개선하기 위해 6000줄 이상의 우버 셰이더(Uber Shader)에 지연 셰이딩(Deferred Shading)을 구현',
     'resume.tiktok.b2': '지연 셰이딩에 물리 기반 렌더링(PBR), 환경 매핑, UV, 노멀 텍스처, 프레넬(Fresnel) 효과를 통합',
     'resume.tiktok.b3': '셰이더에 TAA(Temporal Anti-Aliasing)를 구현하고, 지연 셰이딩을 포워드 셰이딩과 통합',
@@ -227,7 +227,7 @@
 
     'resume.ta.title': '학부 조교',
     'resume.ta.period': '2021.09 - 2021.12',
-    'resume.ta.place': 'Digipen Institute of Technology (레드먼드, WA)',
+    'resume.ta.place': 'Digipen Institute of Technology (Redmond, WA)',
     'resume.ta.b1': '그래픽스 기술 강의 자료 제작 및 발표',
     'resume.ta.view': '발표 자료 보기',
 

@@ -300,3 +300,4 @@
   mo.observe(document.body, { subtree: true, childList: true, characterData: true });
   window.addEventListener('language:changed', safeRefresh);
 })();
+

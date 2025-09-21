@@ -167,4 +167,17 @@ function setNormalAttribute(gl, buffers, programInfo) {
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexNormal);
 }
 
+function resizeCanvasToDisplaySize(gl) {
+  const canvas = gl.canvas;
+  const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1)); // 1~2 사이로 클램프
+  const displayWidth  = Math.floor(canvas.clientWidth  * dpr);
+  const displayHeight = Math.floor(canvas.clientHeight * dpr);
+  if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+    canvas.width = displayWidth;
+    canvas.height = displayHeight;
+  }
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+
 export { drawScene };
+export { resizeCanvasToDisplaySize };
