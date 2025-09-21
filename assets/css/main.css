@@ -560,6 +560,13 @@ section,
   font-size: 64px;
   font-weight: 700;
 }
+.hero h2,
+.hero h4 {
+  position: relative;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.4);
+}
 
 .hero p {
   margin: 5px 0 0 0;
