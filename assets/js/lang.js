@@ -521,6 +521,7 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
   const toen = (href) => href.replace(/_ko\.html$/i, ".html");
 
   const mount = document.querySelector("#portfolio-inline");
+
   const mountContainer = mount?.querySelector(".container");
 
   async function fetchInlineHTML(href) {
@@ -586,6 +587,11 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
   window.addEventListener("language:changed", () => {
     if (mount && mount.dataset.hrefBase) {
       loadDetailsInline(mount.dataset.hrefBase);
+    }
+  });
+  window.addEventListener("DOMContentLoaded", () => {
+    if (mount && !mount.dataset.hrefBase) {
+      loadDetailsInline("details0.html");  // ko인 경우 자동으로 _ko.html로 바꿔서 로드됨
     }
   });
 })();
