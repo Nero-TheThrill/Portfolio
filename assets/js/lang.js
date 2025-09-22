@@ -546,12 +546,13 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
     });
   }
 
-  async function loadDetailsInline(hrefBase) {
+ async function loadDetailsInline(hrefBase, opts = {}) {
     if (!mount || !mountContainer) return;
+
+    const { scroll = false } = opts;
 
     const lang = getLang();
     const href = (lang === "ko") ? toko(hrefBase) : toen(hrefBase);
-
     mount.dataset.hrefBase = hrefBase;
 
     mount.style.display = "block";
@@ -567,16 +568,16 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
       if (typeof window.AOS?.refreshHard === "function") window.AOS.refreshHard();
       else if (typeof window.AOS?.refresh === "function") window.AOS.refresh();
 
-       if (scroll) {
-            const y = mount.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-       } 
-       catch (e) {
-        mountContainer.innerHTML = `<div style="padding:24px;color:#b00020;">Failed to load content.</div>`;
-          console.error(e);
+      if (scroll) {
+        const y = mount.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
+    } catch (e) {
+      mountContainer.innerHTML = `<div style="padding:24px;color:#b00020;">Failed to load content.</div>`;
+      console.error(e);
+    }
   }
+
 
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a.details-link");
