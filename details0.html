@@ -105,16 +105,60 @@
             <div class="portfolio-description">
               <h2>Snake Engine</h2>
               <h5>Game Engine</h5>
+
               <p>
-               I’ve always wanted to try building my own "fully functional" engine, and while working at DigiPen Academy, I noticed that the engine (more like a framework) our students use for projects is provided as a .lib file — which makes debugging difficult and prevents any internal modifications.
-             </p>
-              <p>
-                So, I decided to create a game engine from scratch, one that students can freely debug and modify to fit their needs.
-             </p>
-              <p>
-                The project shown in the video was ported from previous works by my colleague Minjeong Kim using my engine. This helped tremendously in identifying and fixing engine bugs during development.
-                The engine is still being updated.
+                <strong>SNAKE_ENGINE</strong> is a <strong>lightweight C++ game engine</strong> that I personally designed and implemented.
+                It integrates 2D rendering, input, sound, text, collision, and state management into a single framework based on OpenGL 4.6.
+                With a modular (dependency/tag–based) structure, projects can selectively use only the systems they need.
+                It also supports advanced optimizations such as runtime glyph baking, batching &amp; instancing,
+                and frustum culling/spatial hashing.
               </p>
+              <p>
+                While working at DigiPen Academy, I realized that the C++ framework provided to students was only distributed as a
+                <code>.lib</code> file. This meant that students could not optimize performance or extend functionality, since the source
+                code was inaccessible. To address this limitation, I decided to build my own engine from the ground up — one where the
+                entire source is open, debuggable, and modifiable at any time.
+              </p>
+              <p>
+                The engine was built with a focus on learnability and debugging accessibility, designed around exposed headers and a resource registry system.
+                Through sample projects, users can immediately test rendering pipelines, collision systems, and text rendering.
+                It can also be compiled as a static library (<code>.lib</code>) and linked to external projects.
+              </p>
+
+              <h6>Key Features</h6>
+              <ul>
+                <li><strong>State Transition Framework</strong>: Manageable at <code>Load/Init/Update/Draw/Free/Unload</code> level</li>
+                <li><strong>Rendering Optimization</strong>: Batching identical Mesh/Material pairs, instancing</li>
+                <li><strong>Camera &amp; Frustum Culling</strong>: <code>Camera2D</code>–based off–screen object culling</li>
+                <li><strong>Text Engine</strong>: FreeType runtime glyph baking (alignment &amp; multi-line support)</li>
+                <li><strong>Collision System</strong>: AABB/Circle colliders + Spatial Hash Grid + group/mask filtering</li>
+                <li><strong>Sound</strong>: miniaudio–based playback/pause with tag–level controls</li>
+                <li><strong>Asynchronous Loading</strong>: Background resource loading with progress tracking</li>
+                <li><strong>Debug Draw &amp; Logger</strong>: Collision visualization and unified log levels</li>
+              </ul>
+
+              <h6>Architecture Overview</h6>
+              <ul>
+                <li><strong>WindowManager</strong> — GLFW/GLAD initialization, events, swap/clear</li>
+                <li><strong>InputManager</strong> — Key/mouse input, scroll, world coordinate conversion</li>
+                <li><strong>SoundManager</strong> — Sound loading, playback, and instance management</li>
+                <li><strong>RenderManager</strong> — Resource registry, batching/instancing, debug drawing</li>
+                <li><strong>StateManager</strong> — <code>GameState</code> switching, updating, and drawing</li>
+                <li><strong>ObjectManager</strong> — Object lifecycle, collision, and render submission</li>
+              </ul>
+
+              <p>
+                The engine is still under continuous development, and has been validated through sample projects
+                that demonstrate rendering, collision, text, and sound features within actual game scenes.
+              </p>
+             <p style="margin-top: 12px;">
+              <a href="https://github.com/Nero-TheThrill/SNAKE_ENGINE/releases" target="_blank" rel="noopener">
+                <img alt="Latest release" src="https://img.shields.io/github/v/release/Nero-TheThrill/SNAKE_ENGINE">
+              </a>
+              <a href="https://github.com/Nero-TheThrill/SNAKE_ENGINE/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="margin-left:8px;">
+                <img alt="Changelog" src="https://img.shields.io/badge/Changelog-keep%20a%20changelog-blue">
+              </a>
+            </p>
             </div>
           </div>
 

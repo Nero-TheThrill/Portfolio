@@ -78,21 +78,67 @@
 
         <div class="row justify-content-between gy-4 mt-4">
           <div class="col-lg-8">
-            <div class="portfolio-description">
-              <h2>Snake Engine</h2>
-              <h5>게임 엔진</h5>
-              <p>
-                예전부터 “완전히 동작하는” 나만의 엔진을 직접 만들어 보고 싶었습니다. DigiPen Academy에서 일할 때, 학생들이 사용하는 엔진(정확히는 프레임워크에 가까움)이 <code>.lib</code> 파일 형태로 제공된다는 걸 알게 되었는데, 이 때문에 디버깅이 어렵고 내부를 수정할 수도 없었습니다.
-              </p>
-              <p>
-                그래서 학생들이 자유롭게 디버깅하고 필요에 맞게 수정할 수 있는 게임 엔진을 처음부터 직접 만들기로 했습니다.
-              </p>
-              <p>
-                영상에 나온 프로젝트는 제 동료 김민정 님의 이전 작업을 제 엔진으로 포팅한 것입니다. 이 과정에서 엔진 개발 중 발생한 버그들을 확인하고 수정하는 데 큰 도움이 되었습니다.  
-                엔진은 지금도 계속 업데이트 중입니다.
-              </p>
-            </div>
+          <div class="portfolio-description">
+            <h2>Snake Engine</h2>
+            <h5>게임 엔진</h5>
+
+            <p>
+              <strong>SNAKE_ENGINE</strong>은 제가 직접 설계·구현한 <strong>경량 C++ 게임 엔진</strong>으로,
+              OpenGL 4.6 기반 2D 렌더링, 입력, 사운드, 텍스트, 충돌, 상태 관리를 하나의 프레임워크로 통합했습니다.
+              모듈형(의존성/태그 기반) 구조라 프로젝트에 필요한 시스템만 선택적으로 가져올 수 있으며,
+              런타임 글리프 베이킹, 배칭 &amp; 인스턴싱,
+              프러스텀 컬링/공간 해싱 등 최적화 기법을 지원합니다.
+            </p>
+            <p>
+              제가 현재 근무 중인 DigiPen Academy에서는 학생들에게 C++ 프레임워크를 <code>.lib</code> 파일 형태로만 제공하고 있습니다.
+              이 때문에 성능 최적화가 불가능하고, 기능 추가도 어려우며, 디버깅 역시 제한적이라는 문제를 직접 경험했습니다.
+              이러한 한계를 개선하기 위해, 언제든 내부 소스를 들여다보고 자유롭게 수정할 수 있는 엔진을
+              처음부터 직접 설계하고 개발하게 되었습니다.
+            </p>
+            <p>
+              엔진은 학습·디버깅 용이성을 중시해 공개 헤더/리소스 레지스트리 구조로 설계했습니다.
+              샘플 프로젝트를 통해 렌더링 파이프라인과 충돌 시스템, 텍스트 렌더링을 즉시 확인할 수 있고,
+              정적 라이브러리로 빌드해 외부 프로젝트에 연결하는 것도 가능합니다.
+            </p>
+
+            <h6>주요 기능</h6>
+            <ul>
+              <li><strong>상태 전환 프레임워크</strong>: <code>Load/Init/Update/Draw/Free/Unload</code> 단위 관리</li>
+              <li><strong>렌더링 최적화</strong>: 동일 Mesh/Material 배칭, 인스턴싱</li>
+              <li><strong>카메라 &amp; 프러스텀 컬링</strong>: <code>Camera2D</code> 기반 화면 외부 오브젝트 컬링</li>
+              <li><strong>텍스트 엔진</strong>: FreeType 런타임 글리프 베이킹(정렬/멀티라인 지원)</li>
+              <li><strong>충돌 시스템</strong>: AABB/원형 콜라이더 + Spatial Hash Grid + 그룹/마스크</li>
+              <li><strong>사운드</strong>: miniaudio 기반 재생/일시정지/태그 단위 제어</li>
+              <li><strong>비동기 로딩</strong>: 백그라운드 리소스 로딩과 진행률 추적</li>
+              <li><strong>디버그 드로우 &amp; 로거</strong>: 충돌 시각화, 통합 로그 레벨</li>
+            </ul>
+
+            <h6>아키텍처 개요</h6>
+            <ul>
+              <li>WindowManager — GLFW/GLAD 초기화, 이벤트, 스왑/클리어</li>
+              <li>InputManager — 키/마우스, 스크롤, 월드 좌표 변환</li>
+              <li>SoundManager — 사운드 로딩/플레이/인스턴스 관리</li>
+              <li>RenderManager — 리소스 레지스트리, 배칭/인스턴싱, 디버그 드로우</li>
+              <li>StateManager — <code>GameState</code> 전환/업데이트/드로우</li>
+              <li>ObjectManager — 오브젝트 수명/충돌/렌더 제출</li>
+            </ul>
+
+            <p>
+              현재도 지속적으로 업데이트 중이며, 샘플 프로젝트를 통해 실제 게임 씬에서의 렌더링·충돌·텍스트·사운드 동작을 검증했습니다.
+            </p>
+
+
+            <p style="margin-top: 12px;">
+              <a href="https://github.com/Nero-TheThrill/SNAKE_ENGINE/releases" target="_blank" rel="noopener">
+                <img alt="Latest release" src="https://img.shields.io/github/v/release/Nero-TheThrill/SNAKE_ENGINE">
+              </a>
+              <a href="https://github.com/Nero-TheThrill/SNAKE_ENGINE/blob/main/CHANGELOG.md" target="_blank" rel="noopener" style="margin-left:8px;">
+                <img alt="Changelog" src="https://img.shields.io/badge/Changelog-keep%20a%20changelog-blue">
+              </a>
+            </p>
           </div>
+        </div>
+
 
           <div class="col-lg-3">
             <div class="portfolio-info">
