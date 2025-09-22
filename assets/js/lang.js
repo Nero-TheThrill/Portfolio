@@ -567,12 +567,15 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
       if (typeof window.AOS?.refreshHard === "function") window.AOS.refreshHard();
       else if (typeof window.AOS?.refresh === "function") window.AOS.refresh();
 
-      const y = mount.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    } catch (e) {
-      mountContainer.innerHTML = `<div style="padding:24px;color:#b00020;">Failed to load content.</div>`;
-      console.error(e);
-    }
+       if (scroll) {
+            const y = mount.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+       } 
+       catch (e) {
+        mountContainer.innerHTML = `<div style="padding:24px;color:#b00020;">Failed to load content.</div>`;
+          console.error(e);
+      }
   }
 
   document.addEventListener("click", (e) => {
@@ -581,17 +584,17 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
     e.preventDefault();
     const href = a.getAttribute("href") || "";
     if (!href) return;
-    loadDetailsInline(href);
+    loadDetailsInline(href,{ scroll: true });
   });
 
   window.addEventListener("language:changed", () => {
     if (mount && mount.dataset.hrefBase) {
-      loadDetailsInline(mount.dataset.hrefBase);
+      loadDetailsInline(mount.dataset.hrefBase, { scroll: false });
     }
   });
   window.addEventListener("DOMContentLoaded", () => {
     if (mount && !mount.dataset.hrefBase) {
-      loadDetailsInline("details0.html");  // ko인 경우 자동으로 _ko.html로 바꿔서 로드됨
+      loadDetailsInline("details0.html", { scroll: false });
     }
   });
 })();
