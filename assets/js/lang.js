@@ -273,6 +273,87 @@
   }
   };
 
+
+dict.en['details.snake.title'] = 'Snake Engine';
+dict.en['details.snake.subtitle'] = 'Game Engine';
+
+dict.en['details.snake.p1'] = "SNAKE_ENGINE is a lightweight C++ game engine that I personally designed and implemented. It integrates 2D rendering, input, sound, text, collision, and state management into a single framework based on OpenGL 4.6. With a modular (dependency/tag–based) structure, projects can selectively use only the systems they need. It also supports advanced optimizations such as runtime glyph baking, batching & instancing, and frustum culling/spatial hashing.";
+dict.en['details.snake.p2'] = "While working at DigiPen Academy, I realized that the C++ framework provided to students was only distributed as a .lib file. This meant students could not optimize performance or extend functionality since the source code was inaccessible. To address this limitation, I decided to build my own engine from the ground up — one where the entire source is open, debuggable, and modifiable at any time.";
+dict.en['details.snake.p3'] = "The engine was built with a focus on learnability and debugging accessibility, designed around exposed headers and a resource registry system. Through sample projects, users can immediately test rendering pipelines, collision systems, and text rendering. It can also be compiled as a static library (.lib) and linked to external projects.";
+
+dict.en['details.snake.featuresTitle'] = 'Key Features';
+dict.en['details.snake.feature1']  = 'State Transition Framework: Manageable at Load/Init/Update/Draw/Free/Unload level';
+dict.en['details.snake.feature2']  = 'Rendering Optimization: Batching identical Mesh/Material pairs, instancing';
+dict.en['details.snake.feature3']  = 'Camera & Frustum Culling: Camera2D–based off–screen object culling';
+dict.en['details.snake.feature4']  = 'Text Engine: FreeType runtime glyph baking (alignment & multi-line support)';
+dict.en['details.snake.feature5']  = 'Collision System: AABB/Circle colliders + Spatial Hash Grid + group/mask filtering';
+dict.en['details.snake.feature6']  = 'Sound: miniaudio–based playback/pause with tag–level controls';
+dict.en['details.snake.feature7']  = 'Asynchronous Loading: Background resource loading with progress tracking';
+dict.en['details.snake.feature8']  = 'Debug Draw & Logger: Collision visualization and unified log levels';
+
+dict.en['details.snake.archTitle'] = 'Architecture Overview';
+dict.en['details.snake.arch1'] = 'WindowManager — GLFW/GLAD initialization, events, swap/clear';
+dict.en['details.snake.arch2'] = 'InputManager — Key/mouse input, scroll, world coordinate conversion';
+dict.en['details.snake.arch3'] = 'SoundManager — Sound loading, playback, and instance management';
+dict.en['details.snake.arch4'] = 'RenderManager — Resource registry, batching/instancing, debug drawing';
+dict.en['details.snake.arch5'] = 'StateManager — GameState switching, updating, and drawing';
+dict.en['details.snake.arch6'] = 'ObjectManager — Object lifecycle, collision, and render submission';
+
+dict.en['details.snake.p4'] = 'The engine is still under continuous development, and has been validated through sample projects that demonstrate rendering, collision, text, and sound features within actual game scenes.';
+
+dict.en['details.snake.badges.releaseAlt'] = 'Latest release';
+dict.en['details.snake.badges.changelogAlt'] = 'Changelog';
+
+dict.en['details.snake.info.title']    = 'Project information';
+dict.en['details.snake.info.category'] = 'Category';
+dict.en['details.snake.info.categoryV']= '2D Game Engine';
+dict.en['details.snake.info.team']     = 'Team size';
+dict.en['details.snake.info.teamV']    = '1 Dev';
+dict.en['details.snake.info.date']     = 'Project date';
+dict.en['details.snake.info.dateV']    = 'Jul 2025 -';
+dict.en['details.snake.info.url']      = 'Project URL';
+dict.en['details.snake.info.download'] = 'Download Project';
+
+dict.ko['details.snake.title'] = 'Snake Engine';
+dict.ko['details.snake.subtitle'] = '게임 엔진';
+
+dict.ko['details.snake.p1'] = "SNAKE_ENGINE은 제가 직접 설계·구현한 경량 C++ 게임 엔진으로, OpenGL 4.6 기반 2D 렌더링, 입력, 사운드, 텍스트, 충돌, 상태 관리를 하나의 프레임워크로 통합했습니다. 모듈형(의존성/태그 기반) 구조라 프로젝트에 필요한 시스템만 선택적으로 가져올 수 있으며, 런타임 글리프 베이킹, 배칭 및 인스턴싱, 프러스텀 컬링/공간 해싱 등 최적화 기법을 지원합니다.";
+dict.ko['details.snake.p2'] = "현재 근무 중인 DigiPen Academy에서는 학생들에게 C++ 프레임워크를 .lib 파일 형태로만 제공하고 있습니다. 이 때문에 성능 최적화가 불가능하고, 기능 추가도 어려우며, 디버깅 역시 제한적이라는 문제를 직접 경험했습니다. 이러한 한계를 개선하기 위해, 언제든 내부 소스를 들여다보고 자유롭게 수정할 수 있는 엔진을 처음부터 직접 설계하고 개발하게 되었습니다.";
+dict.ko['details.snake.p3'] = "엔진은 학습·디버깅 용이성을 중시해 공개 헤더/리소스 레지스트리 구조로 설계했습니다. 샘플 프로젝트를 통해 렌더링 파이프라인과 충돌 시스템, 텍스트 렌더링을 즉시 확인할 수 있고, 정적 라이브러리(.lib)로 빌드해 외부 프로젝트에 연결하는 것도 가능합니다.";
+
+dict.ko['details.snake.featuresTitle'] = '주요 기능';
+dict.ko['details.snake.feature1']  = '상태 전환 프레임워크: Load/Init/Update/Draw/Free/Unload 단위 관리';
+dict.ko['details.snake.feature2']  = '렌더링 최적화: 동일 Mesh/Material 배칭, 인스턴싱';
+dict.ko['details.snake.feature3']  = '카메라 & 프러스텀 컬링: Camera2D 기반 화면 외부 오브젝트 컬링';
+dict.ko['details.snake.feature4']  = '텍스트 엔진: FreeType 런타임 글리프 베이킹(정렬/멀티라인 지원)';
+dict.ko['details.snake.feature5']  = '충돌 시스템: AABB/원형 콜라이더 + Spatial Hash Grid + 그룹/마스크';
+dict.ko['details.snake.feature6']  = '사운드: miniaudio 기반 재생/일시정지/태그 단위 제어';
+dict.ko['details.snake.feature7']  = '비동기 로딩: 백그라운드 리소스 로딩과 진행률 추적';
+dict.ko['details.snake.feature8']  = '디버그 드로우 & 로거: 충돌 시각화, 통합 로그 레벨';
+
+dict.ko['details.snake.archTitle'] = '아키텍처 개요';
+dict.ko['details.snake.arch1'] = 'WindowManager — GLFW/GLAD 초기화, 이벤트, 스왑/클리어';
+dict.ko['details.snake.arch2'] = 'InputManager — 키/마우스, 스크롤, 월드 좌표 변환';
+dict.ko['details.snake.arch3'] = 'SoundManager — 사운드 로딩/플레이/인스턴스 관리';
+dict.ko['details.snake.arch4'] = 'RenderManager — 리소스 레지스트리, 배칭/인스턴싱, 디버그 드로우';
+dict.ko['details.snake.arch5'] = 'StateManager — GameState 전환/업데이트/드로우';
+dict.ko['details.snake.arch6'] = 'ObjectManager — 오브젝트 수명/충돌/렌더 제출';
+
+dict.ko['details.snake.p4'] = '현재도 지속적으로 업데이트 중이며, 샘플 프로젝트를 통해 실제 게임 씬에서의 렌더링·충돌·텍스트·사운드 동작을 검증했습니다.';
+
+dict.ko['details.snake.badges.releaseAlt'] = '최신 릴리스';
+dict.ko['details.snake.badges.changelogAlt'] = '변경 이력';
+
+dict.ko['details.snake.info.title']    = '프로젝트 정보';
+dict.ko['details.snake.info.category'] = '카테고리';
+dict.ko['details.snake.info.categoryV']= '2D 게임 엔진';
+dict.ko['details.snake.info.team']     = '팀 규모';
+dict.ko['details.snake.info.teamV']    = '개발자 1명';
+dict.ko['details.snake.info.date']     = '프로젝트 기간';
+dict.ko['details.snake.info.dateV']    = '2025년 7월 ~';
+dict.ko['details.snake.info.url']      = '프로젝트 URL';
+dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
+
   const toggle = document.querySelector('.language-toggle');
   if (!toggle) return;
 
@@ -322,6 +403,7 @@
   window.setLanguage = function(lang) {
     localStorage.setItem('lang', lang);
     apply(lang);
+    window.dispatchEvent(new Event('language:changed'));
   };
 
   // Bind buttons and init
@@ -428,4 +510,82 @@
     });
     mo.observe(header, { attributes: true, attributeFilter: ['class'] });
   }
+})();
+
+(function () {
+  const getLang = () =>
+    document.querySelector(".language-toggle")?.getAttribute("data-active") ||
+    localStorage.getItem("lang") || "en";
+
+  const toko = (href) => /_ko\.html$/i.test(href) ? href : href.replace(/\.html$/i, "_ko.html");
+  const toen = (href) => href.replace(/_ko\.html$/i, ".html");
+
+  const mount = document.querySelector("#portfolio-inline");
+  const mountContainer = mount?.querySelector(".container");
+
+  async function fetchInlineHTML(href) {
+    const res = await fetch(href, { credentials: "omit" });
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const container = doc.querySelector("#portfolio-details .container");
+    return container ? container.innerHTML : "";
+  }
+
+  function initSwipers(root) {
+    root.querySelectorAll(".init-swiper").forEach((swiperElement) => {
+      const cfgEl = swiperElement.querySelector(".swiper-config");
+      if (!cfgEl) return;
+      let config = {};
+      try { config = JSON.parse(cfgEl.textContent.trim()); } catch {}
+      if (swiperElement.swiper) {
+        swiperElement.swiper.update();
+      } else {
+        new Swiper(swiperElement, config);
+      }
+    });
+  }
+
+  async function loadDetailsInline(hrefBase) {
+    if (!mount || !mountContainer) return;
+
+    const lang = getLang();
+    const href = (lang === "ko") ? toko(hrefBase) : toen(hrefBase);
+
+    mount.dataset.hrefBase = hrefBase;
+
+    mount.style.display = "block";
+    mountContainer.innerHTML = `<div style="padding:24px;text-align:center;opacity:.7;">Loading...</div>`;
+
+    try {
+      const inner = await fetchInlineHTML(href);
+      if (!inner) throw new Error("No content");
+      mountContainer.innerHTML = inner;
+
+      initSwipers(mount);
+
+      if (typeof window.AOS?.refreshHard === "function") window.AOS.refreshHard();
+      else if (typeof window.AOS?.refresh === "function") window.AOS.refresh();
+
+      const y = mount.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    } catch (e) {
+      mountContainer.innerHTML = `<div style="padding:24px;color:#b00020;">Failed to load content.</div>`;
+      console.error(e);
+    }
+  }
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a.details-link");
+    if (!a) return;
+    e.preventDefault();
+    const href = a.getAttribute("href") || "";
+    if (!href) return;
+    loadDetailsInline(href);
+  });
+
+  window.addEventListener("language:changed", () => {
+    if (mount && mount.dataset.hrefBase) {
+      loadDetailsInline(mount.dataset.hrefBase);
+    }
+  });
 })();
