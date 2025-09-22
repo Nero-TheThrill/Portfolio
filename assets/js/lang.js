@@ -403,6 +403,14 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
   window.setLanguage = function(lang) {
     localStorage.setItem('lang', lang);
     apply(lang);
+      const resumeLink = document.getElementById("resume-link");
+    if (resumeLink) {
+    if (lang === "ko") {
+      resumeLink.setAttribute("href", "JinwooChoi_resume_kr.pdf");
+    } else {
+      resumeLink.setAttribute("href", "JinwooChoi_resume.pdf");
+    }
+  }
     window.dispatchEvent(new Event('language:changed'));
   };
 
@@ -416,6 +424,15 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
     const saved = localStorage.getItem('lang');
     const initial = saved || 'en';
     apply(initial);
+
+    const resumeLink = document.getElementById("resume-link");
+    if (resumeLink) {
+    if (initial === "ko") {
+      resumeLink.setAttribute("href", "JinwooChoi_resume_kr.pdf");
+    } else {
+      resumeLink.setAttribute("href", "JinwooChoi_resume.pdf");
+    }
+  }
   });
 })();
 
