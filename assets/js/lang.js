@@ -339,62 +339,93 @@
 
 
 
+// -----------------------
+// LANGUAGE TOGGLE VISIBILITY (show after scroll stops)
+// -----------------------
 (() => {
   const toggle = document.querySelector('.language-toggle');
   if (!toggle) return;
 
-  const header = document.querySelector('.header');
+  const header  = document.querySelector('.header');
   const menuBtn = document.querySelector('.header-toggle');
-  const aboutImg = document.querySelector('#about img.img-fluid');
-  const aboutSection = document.querySelector('#about');
 
-  const getBottomY = (el) => {
-    if (!el) return 0;
-    const r = el.getBoundingClientRect();
-    return r.top + window.scrollY + r.height;
-  };
+  const SHOW_DELAY_MS        = 1200;
+  const SCROLL_HIDE_MIN_Y    = 520;
+  const TOP_ALWAYS_SHOW_Y    = 520;
 
-  let thresholdY = 0;
-  const recalc = () => {
-    thresholdY = aboutImg ? getBottomY(aboutImg) :
-                 aboutSection ? (aboutSection.getBoundingClientRect().top + window.scrollY + aboutSection.offsetHeight * 0.7) :
-                 0;
-    apply();
-  };
+  let hidden  = false;
+  let timerId = null;
 
-  let hidden = false;
   const setHidden = (next) => {
-    if (next === hidden) return;
+    if (hidden === next) return;
     hidden = next;
     requestAnimationFrame(() => {
       toggle.classList.toggle('is-hidden', hidden);
     });
   };
 
-  const apply = () => {
-    const y = window.scrollY || window.pageYOffset;
-    const belowImage = thresholdY ? (y > thresholdY-550) : false;
-    const menuOpen = header && header.classList.contains('header-show');
-    setHidden(belowImage || menuOpen);
+  const scheduleShow = () => {
+    if (timerId) clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      const menuOpen = header && header.classList.contains('header-show');
+      if (!menuOpen) setHidden(false);
+    }, SHOW_DELAY_MS);
   };
 
-  recalc();
-  window.addEventListener('scroll', apply, { passive: true });
-  window.addEventListener('resize', recalc);
+  const onScroll = () => {
+    const y = window.scrollY || 0;
 
-  if (aboutImg) {
-    if (aboutImg.complete) recalc();
-    else aboutImg.addEventListener('load', recalc);
-  }
+    if (y < TOP_ALWAYS_SHOW_Y) {
+      if (timerId) clearTimeout(timerId);
+      setHidden(false);
+      return;
+    }
+
+    const menuOpen = header && header.classList.contains('header-show');
+    if (menuOpen) {
+      if (timerId) clearTimeout(timerId);
+      setHidden(true);
+      return;
+    }
+
+    if (y > SCROLL_HIDE_MIN_Y) {
+      setHidden(true);
+      scheduleShow();
+    } else {
+      if (timerId) clearTimeout(timerId);
+      setHidden(false);
+    }
+  };
+
+  onScroll();
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
 
   if (menuBtn) {
     menuBtn.addEventListener('click', () => {
-      setTimeout(apply, 0);
+      setTimeout(() => {
+        const open = header && header.classList.contains('header-show');
+        if (open) {
+          if (timerId) clearTimeout(timerId);
+          setHidden(true);
+        } else {
+          scheduleShow();
+        }
+      }, 0);
     });
   }
 
   if (header) {
-    const mo = new MutationObserver(apply);
+    const mo = new MutationObserver(() => {
+      const open = header.classList.contains('header-show');
+      if (open) {
+        if (timerId) clearTimeout(timerId);
+        setHidden(true);
+      } else {
+        scheduleShow();
+      }
+    });
     mo.observe(header, { attributes: true, attributeFilter: ['class'] });
   }
 })();
