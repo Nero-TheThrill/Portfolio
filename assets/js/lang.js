@@ -277,7 +277,7 @@
 dict.en['details.snake.title'] = 'Snake Engine';
 dict.en['details.snake.subtitle'] = 'Game Engine';
 
-dict.en['details.snake.p1'] = "SNAKE_ENGINE is a lightweight C++ game engine that I personally designed and implemented. It integrates 2D rendering, input, sound, text, collision, and state management into a single framework based on OpenGL 4.6. With a modular (dependency/tag–based) structure, projects can selectively use only the systems they need. It also supports advanced optimizations such as runtime glyph baking, batching & instancing, and frustum culling/spatial hashing.";
+dict.en['details.snake.p1'] = "SNAKE_ENGINE is a lightweight C++ game engine that I personally designed and implemented. It integrates 2D rendering, input, sound, text, collision, and state management into a single framework based on OpenGL 4.6. It supports advanced optimizations such as runtime glyph baking, batching & instancing, and frustum culling/spatial hashing.";
 dict.en['details.snake.p2'] = "While working at DigiPen Academy, I realized that the C++ framework provided to students was only distributed as a .lib file. This meant students could not optimize performance or extend functionality since the source code was inaccessible. To address this limitation, I decided to build my own engine from the ground up — one where the entire source is open, debuggable, and modifiable at any time.";
 dict.en['details.snake.p3'] = "The engine was built with a focus on learnability and debugging accessibility, designed around exposed headers and a resource registry system. Through sample projects, users can immediately test rendering pipelines, collision systems, and text rendering. It can also be compiled as a static library (.lib) and linked to external projects.";
 
@@ -317,7 +317,7 @@ dict.en['details.snake.info.download'] = 'Download Project';
 dict.ko['details.snake.title'] = 'Snake Engine';
 dict.ko['details.snake.subtitle'] = '게임 엔진';
 
-dict.ko['details.snake.p1'] = "SNAKE_ENGINE은 제가 직접 설계·구현한 경량 C++ 게임 엔진으로, OpenGL 4.6 기반 2D 렌더링, 입력, 사운드, 텍스트, 충돌, 상태 관리를 하나의 프레임워크로 통합했습니다. 모듈형(의존성/태그 기반) 구조라 프로젝트에 필요한 시스템만 선택적으로 가져올 수 있으며, 런타임 글리프 베이킹, 배칭 및 인스턴싱, 프러스텀 컬링/공간 해싱 등 최적화 기법을 지원합니다.";
+dict.ko['details.snake.p1'] = "SNAKE_ENGINE은 제가 직접 설계·구현한 경량 C++ 게임 엔진으로, OpenGL 4.6 기반 2D 렌더링, 입력, 사운드, 텍스트, 충돌, 상태 관리를 하나의 프레임워크로 통합했습니다. 런타임 글리프 베이킹, 배칭 및 인스턴싱, 프러스텀 컬링/공간 해싱 등 최적화 기법을 지원합니다.";
 dict.ko['details.snake.p2'] = "현재 근무 중인 DigiPen Academy에서는 학생들에게 C++ 프레임워크를 .lib 파일 형태로만 제공하고 있습니다. 이 때문에 성능 최적화가 불가능하고, 기능 추가도 어려우며, 디버깅 역시 제한적이라는 문제를 직접 경험했습니다. 이러한 한계를 개선하기 위해, 언제든 내부 소스를 들여다보고 자유롭게 수정할 수 있는 엔진을 처음부터 직접 설계하고 개발하게 되었습니다.";
 dict.ko['details.snake.p3'] = "엔진은 학습·디버깅 용이성을 중시해 공개 헤더/리소스 레지스트리 구조로 설계했습니다. 샘플 프로젝트를 통해 렌더링 파이프라인과 충돌 시스템, 텍스트 렌더링을 즉시 확인할 수 있고, 정적 라이브러리(.lib)로 빌드해 외부 프로젝트에 연결하는 것도 가능합니다.";
 
@@ -403,6 +403,14 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
   window.setLanguage = function(lang) {
     localStorage.setItem('lang', lang);
     apply(lang);
+      const resumeLink = document.getElementById("resume-link");
+    if (resumeLink) {
+    if (lang === "ko") {
+      resumeLink.setAttribute("href", "JinwooChoi_resume_kr.pdf");
+    } else {
+      resumeLink.setAttribute("href", "JinwooChoi_resume.pdf");
+    }
+  }
     window.dispatchEvent(new Event('language:changed'));
   };
 
@@ -416,6 +424,15 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
     const saved = localStorage.getItem('lang');
     const initial = saved || 'en';
     apply(initial);
+
+    const resumeLink = document.getElementById("resume-link");
+    if (resumeLink) {
+    if (initial === "ko") {
+      resumeLink.setAttribute("href", "JinwooChoi_resume_kr.pdf");
+    } else {
+      resumeLink.setAttribute("href", "JinwooChoi_resume.pdf");
+    }
+  }
   });
 })();
 
@@ -595,7 +612,7 @@ dict.ko['details.snake.info.download'] = '프로젝트 다운로드';
   });
   window.addEventListener("DOMContentLoaded", () => {
     if (mount && !mount.dataset.hrefBase) {
-      loadDetailsInline("details0.html", { scroll: false });
+      loadDetailsInline("details2.html", { scroll: false });
     }
   });
 })();
